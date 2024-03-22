@@ -1,15 +1,14 @@
-import Logo from "./../app/images/logo.png";
-import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import { createClient } from "@/prismicio";
 
-export default function header() {
+
+export default  async function Header() {
+  const client = createClient();
+  const settings = await client.getSingle("settings");
+
   return (
-    <div>header
-     <Image
-      src={Logo}
-      width={210}
-      height={210}
-      alt="Perseus Logo"
-    />
+    <div>
+      <Navbar settings={settings} />
     </div>
-  )
+  );
 }

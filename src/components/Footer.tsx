@@ -4,7 +4,7 @@ import { createClient } from "@/prismicio";
 import { PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
 
-export default async function footer() {
+export default async function Footer() {
     const client = createClient();
     const settings = await client.getSingle("settings");
   return (
@@ -18,11 +18,11 @@ export default async function footer() {
     />
   <span className="sr-only">Perseus.AI Home Page</span>
 </Link>
-    <nav>
-        <ul>
+    <nav aria-label="Footer">
+        <ul className="flex gap-6">
             {settings.data.navigation.map((item) =>(
                 <li key={item.label}>
-                    <PrismicNextLink field={item.link}>
+                    <PrismicNextLink field={item.link} className="inline-flex min-h-11 items-center">
                          {item.label}
                     </PrismicNextLink>
                 </li>
